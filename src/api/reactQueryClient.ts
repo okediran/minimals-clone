@@ -6,7 +6,7 @@ import axiosInstance from './axiosInstance';
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      retry: 1, // Retry failed queries once before displaying an error
+      retry: 3, // Retry failed queries once before displaying an error
       refetchOnWindowFocus: false, // Disable automatic refetching of data when the window gains focus
     },
   },

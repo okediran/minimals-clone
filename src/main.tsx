@@ -1,15 +1,47 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
+import React, { useEffect, useState } from 'react';
+import ReactDOM from 'react-dom/client';
+import { Provider, useSelector } from 'react-redux';
+import { ThemeProvider, Theme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import App from './App';
+import store, { RootState } from './store/store';
+import lightTheme from './themes/lightTheme';
+import darkTheme from './themes/darkTheme';
+// import { QueryClientProvider } from '@tanstack/react-query';
+// import { queryClient } from './api/reactQueryClient';
 
-// if (process.env.NODE_ENV === 'development') {
-//   const { server } = require('./mocks/browser.ts');
-//   server.listen();
-// }
+// Initialize the MSW worker in development mode
+async function deferRender() {
+    const {server} = await import('./mocks/browser');
+    server.listen();
+}
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+
+const Main: React.FC = () => {
+  const themeMode = useSelector((state: RootState) => state.theme.mode);
+  const [theme, setTheme] = useState<Theme>(themeMode === 'light' ? lightTheme : darkTheme);
+
+  useEffect(() => {
+    setTheme(themeMode === 'light' ? lightTheme : darkTheme);
+  }, [themeMode]);
+
+  return (
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </ThemeProvider>
+  );
+};
+
+  ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+    <React.StrictMode>
+      <Provider store={store}>
+        {/* <QueryClientProvider client={queryClient}> */}
+          <Main />
+        {/* </QueryClientProvider> */}
+      </Provider>
+    </React.StrictMode>
+  );
+
