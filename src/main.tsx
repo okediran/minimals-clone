@@ -7,14 +7,15 @@ import App from './App';
 import store, { RootState } from './store/store';
 import lightTheme from './themes/lightTheme';
 import darkTheme from './themes/darkTheme';
-import { QueryClientProvider } from '@tanstack/react-query';
-import { queryClient } from './api/reactQueryClient';
-// import { server  } from './mocks/browser';
+// import { QueryClientProvider } from '@tanstack/react-query';
+// import { queryClient } from './api/reactQueryClient';
 
-// // Initialize the MSW worker in development mode
-// if (process.env.NODE_ENV === 'development') {
-//   server.listen();
-// }
+// Initialize the MSW worker in development mode
+async function deferRender() {
+    const {server} = await import('./mocks/browser');
+    server.listen();
+}
+
 
 const Main: React.FC = () => {
   const themeMode = useSelector((state: RootState) => state.theme.mode);
@@ -27,17 +28,20 @@ const Main: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </ThemeProvider>
   );
 };
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <QueryClientProvider client={queryClient}>
-        <Main />
-      </QueryClientProvider>
-    </Provider>
-  </React.StrictMode>
-);
+  ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+    <React.StrictMode>
+      <Provider store={store}>
+        {/* <QueryClientProvider client={queryClient}> */}
+          <Main />
+        {/* </QueryClientProvider> */}
+      </Provider>
+    </React.StrictMode>
+  );
+
