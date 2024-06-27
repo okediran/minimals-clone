@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import './index.css';
 import ReactDOM from 'react-dom/client';
 import { Provider, useSelector } from 'react-redux';
 import { ThemeProvider, Theme } from '@mui/material/styles';
@@ -28,9 +29,7 @@ const Main: React.FC = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Provider store={store}>
         <App />
-      </Provider>
     </ThemeProvider>
   );
 };
