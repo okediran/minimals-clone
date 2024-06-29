@@ -1,7 +1,5 @@
 // src/components/LoginPage.tsx
-
-import React, { useState } from "react";
-import { Typography, Box, Grid, styled, Paper } from "@mui/material";
+import { Typography, Box, Grid } from "@mui/material";
 import {
   AccentureSvg,
   Tmobilesvg,

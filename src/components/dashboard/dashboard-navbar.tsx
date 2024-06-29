@@ -16,15 +16,14 @@ import {
   Modal,
   FormControl,
   OutlinedInput,
-  InputAdornment
-
+  InputAdornment,
+  Stack
 } from "@mui/material";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import SettingsIcon from "@mui/icons-material/Settings";
 import SearchIcon from "@mui/icons-material/Search";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import PeopleAltOutlinedIcon from "@mui/icons-material/PeopleAltOutlined";
-import Stack from "@mui/material/Stack";
 import { deepOrange } from "@mui/material/colors";
 import UKflag from "../../assets/images/flag-uk.svg";
 import DEflag from "../../assets/images/flag-de.svg";
@@ -44,9 +43,7 @@ const classes = {
   iconButton: `${PREFIX}-IconButton`,
   appbar: `${PREFIX}-appbar`,
   styledBadge: `${PREFIX}-styledBadge`,
-  link: `${PREFIX}-link`,
   img: `${PREFIX}-img`,
-  modal: `${PREFIX}-modal`,
 };
 
 // Styled component for the main container
