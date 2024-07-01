@@ -39,7 +39,7 @@ const MainBoard: React.FC = () => {
  
 
   return (
-    <StyledMain>
+    <StyledMain >
       <DashboardNavbar/>
       <Box sx={{ padding: "20px" }}>
         <Typography variant="h4">Main Content</Typography>

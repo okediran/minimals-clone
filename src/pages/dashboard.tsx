@@ -1,23 +1,21 @@
 import React from "react";
-import {
-  Box,
-  Grid,
-} from "@mui/material";
+import { Box, Stack } from "@mui/material";
 import MainBoard from "../components/dashboard/mainBoard";
 import Sidebar from "../components/dashboard/sideBar";
 
 const LoginPage: React.FC = () => {
   return (
-    <Box >
-      <Grid container min-height="100vh">
-        <Grid item xs={3}>
-          <Sidebar/>
-        </Grid>
-        <Grid item xs={9}>
-            <MainBoard/>
-        </Grid>
-      </Grid>
-    </Box>
+    <Stack sx={{overflow:'hidden'}}>
+      {/* sidebar */}
+      <Box sx={{}}>
+        <Sidebar />
+      </Box>
+
+      {/* mainboard */}
+      <Box sx={{marginLeft:'18.5rem',width:'77%'}}>
+        <MainBoard />
+      </Box>
+    </Stack>
   );
 };
 
