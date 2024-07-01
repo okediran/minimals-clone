@@ -34,6 +34,7 @@ import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import CloseIcon from "@mui/icons-material/Close";
 import { Link } from "react-router-dom";
 import LightbulbOutlinedIcon from '@mui/icons-material/LightbulbOutlined';
+import { State } from './types';
 
 // CSS prefix for styling
 const PREFIX = "Demo";
@@ -75,7 +76,6 @@ const StyledModalContent = styled("div")(({ theme }) => ({
     backgroundColor: 'white',
     padding: theme.spacing(2, 4, 3),
     outline: 'none',
-    width: 600,
     borderRadius: theme.shape.borderRadius,
     position: 'absolute',
     top: '50%',
@@ -96,12 +96,6 @@ const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
   },
 }));
 
-interface State {
-    anchorElProfile: HTMLElement | null;
-    anchorElNotifications: HTMLElement | null;
-    anchorElContacts: HTMLElement | null;
-    anchorElCountry: HTMLElement | null;
-  }
 
   const initialState: State = {
     anchorElProfile: null,
